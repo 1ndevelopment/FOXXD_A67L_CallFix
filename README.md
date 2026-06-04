@@ -53,8 +53,8 @@ Magisk module that restores incoming calls on the FOXXD A67L (Unisoc SC9863A) ru
 0. ZIP module contents & move to device
 ```bash
 cd FOXD_A67L_CallFix
-zip ../CallFix_v12b.zip *
-adb push ../CallFix_v12b.zip /sdcard/
+zip ../CallFix_v1.0.zip *
+adb push ../CallFix_v1.0.zip /sdcard/
 ```
 1. Install the module ZIP in Magisk Manager or via `magisk --install-module`.
 2. Reboot.
