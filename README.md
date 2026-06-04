@@ -36,7 +36,7 @@ Magisk module that restores incoming calls on the FOXXD A67L (Unisoc SC9863A) ru
 
 | Path | Purpose |
 |------|---------|
-| `module.prop` | Magisk module metadata (v5.12b) |
+| `module.prop` | Magisk module metadata |
 | `customize.sh` | Installer UI and diagnostics |
 | `post-fs-data.sh` | Post-boot setup: overlays, properties, ims_bridged, SELinux rules |
 | `sepolicy.rule` | SELinux rules merged at boot (short type names — `priv_app`, not `u:r:priv_app:s0`) |
