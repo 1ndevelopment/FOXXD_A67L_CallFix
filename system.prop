@@ -1,0 +1,17 @@
+# Enable VoLTE (required for AT&T - no CSFB support)
+persist.vendor.sys.volte.enable=true
+
+# Keep IMS bridge running for VoLTE support
+persist.vendor.sys.single.imsstack=true
+persist.sys.ims.vt_resolution=1
+persist.sys.support.vt=true
+
+# Ensure cellular data works
+ro.com.android.mobiledata=true
+
+# Keep radio stable
+vendor.ril.modem.assert=0
+persist.vendor.sys.modemreset=1
+
+# IMS settings
+persist.ims.apn=ims

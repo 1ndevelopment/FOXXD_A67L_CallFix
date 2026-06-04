@@ -1,0 +1,57 @@
+# === IMS Service as priv-app ===
+# Allow system_server to bind to IMS service in the IMS app
+allow system_server priv_app binder { call transfer }
+allow system_server priv_app fd { use }
+allow system_server priv_app process { getattr }
+
+# Allow IMS app to communicate with radio subsystem for IMS state
+allow priv_app radio binder { call }
+allow priv_app radio fd { use }
+allow priv_app radio process { getattr }
+
+# Allow radio (urild) to find the ext_radio_service (Unisoc AIDL IMS radio)
+allow radio system_app_33_0 service { find }
+
+# === TELEPHONY FIXES ===
+allow system_server radio process { getattr }
+allow system_server system_suspend process { getattr }
+allow system_server audioserver process { getattr }
+allow system_server vold process { getattr }
+
+# === BINDER IPC ===
+allow system_server gmscore_app process { getattr }
+allow system_server platform_app process { getattr }
+allow system_server untrusted_app_32 process { getattr }
+allow system_server untrusted_app_29 process { getattr }
+
+# === SURFACEFLINGER IPC ===
+allow surfaceflinger system_server process { getattr }
+allow surfaceflinger platform_app process { getattr }
+allow surfaceflinger untrusted_app_32 process { getattr }
+
+# === SUSPEND/SENSOR ===
+allow system_suspend hal_sensors_default file { read }
+
+# === UNISOC IMS RADIO ACCESS ===
+# Allow priv_app to find the HIDL IImsRadio hwservice (hwservice_manager)
+allow priv_app hal_extRadio_hwservice hwservice_manager { find }
+
+# Allow priv_app to find the AIDL IImsRadio on vndbinder (service_manager)
+allow priv_app ext_radio_service service_manager { find }
+
+# Allow priv_app to find the SRMI service on vndbinder (service_manager)
+allow priv_app default_android_service service_manager { find }
+
+# Allow priv_app to call via binder to radio (urild) for IImsRadio
+allow priv_app radio binder { call transfer }
+allow priv_app rild binder { call transfer }
+
+# === PROPERTY_SERVICE (SystemProperties.set) ===
+# Allow priv_app to set radio.* and vendor.ims* system properties
+allow priv_app radio_prop property_service set
+
+# Allow priv_app to write to the property_service socket (needed for property setting)
+allow priv_app property_socket sock_file { write }
+
+# === APP-TO-APP COMMUNICATION ===
+allow priv_app gmscore_app file { read }

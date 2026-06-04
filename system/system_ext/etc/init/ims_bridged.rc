@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+service ims_bridged /system_ext/bin/ims_bridged
+    class main
+    user root
+
+#write /sys/module/ims_bridge/parameters/volte_video_apsk 1
