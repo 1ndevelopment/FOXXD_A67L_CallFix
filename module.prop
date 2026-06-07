@@ -1,6 +1,6 @@
 id=FOXXD_A67L_CallFix
 name=FOXXD A67L Incoming Call Fix
-version=1.0
+version=v1.0
 versionCode=1
 author=1ndevelopment
 description=Fixes incoming calls on FOXXD A67L (SC9863A) with GSI. AT&T requires VoLTE. Uses stock Unisoc IMS stack (com.spreadtrum.ims) instead of FLOSS IMS. Includes ims_bridged daemon, IImsRadio AIDL client, and VoLTE enablement.
