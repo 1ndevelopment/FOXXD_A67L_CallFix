@@ -1,10 +1,10 @@
-# FOXXD A67L GSI Incoming Call Fix
+# GSI on Unisoc Incoming Call Fix
 
-Magisk module that restores incoming calls on the FOXXD A67L (Unisoc SC9863A) running a GSI (GSI) on AT&T. AT&T requires VoLTE — CSFB is not supported (`mCssSupported=false`). The stock firmware's Unisoc IMS stack is deployed to trigger IMS PDN establishment via `urild`'s `vendor.unisoc.hardware.radio.ims.IImsRadio/slot1`.
+Magisk module that restores incoming calls on some Unisoc mobiles, running a GSI (GSI). Most mobile operators require VoLTE, and it is good. The stock firmware's Unisoc IMS stack is deployed to trigger IMS PDN establishment via `urild`'s `vendor.unisoc.hardware.radio.ims.IImsRadio/slot1`.
 
 ## Root Cause
 
-- AT&T has disabled CSFB on this device — voice calls must use VoLTE.
+- Voice calls must use VoLTE.
 - GSI ROMs ship FLOSS IMS, which lacks the Unisoc AIDL stubs needed to call `IImsRadio.setCallback()`. Without this call, urild never establishes the IMS PDN bearer.
 - The stock firmware's `com.spreadtrum.ims` APK contains the required stubs but won't run unmodified on a GSI (signature mismatch, missing permissions, SELinux denials).
 
@@ -89,8 +89,8 @@ The `ims_bridged` daemon provides the bridge between the kernel IMS driver and u
 
 ## Compatibility
 
-- **Device**: FOXXD A67L (Unisoc SC9863A)
+- **Devices**: FOXXD A67L (Unisoc SC9863A), POCO C71, Redmi A5
 - **Modem**: Spreadtrum/Unisoc with urild implementing `vendor.unisoc.hardware.radio.ims.IImsRadio`
 - **Carrier**: AT&T (or any carrier requiring VoLTE with CSFB disabled)
-- **GSI**: Android 14 PHH-based GSIs (tested on LineageOS GSI)
+- **GSI**: Android 14 PHH-based GSIs (tested on LineageOS GSI, crDroid GSI)
 - **Magisk**: 24+
